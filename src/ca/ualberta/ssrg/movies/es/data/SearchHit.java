@@ -5,6 +5,7 @@ public class SearchHit<T> {
 	private String _type;
 	private String _id;
 	private String _version;
+	private float _score;
 	private boolean found;
 	private T _source;
 

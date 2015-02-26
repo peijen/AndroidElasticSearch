@@ -44,7 +44,9 @@ public class ESMovieManager {
 	 */
 	public Movie getMovie(int id) {
 		SearchHit<Movie> sr = null;
+		
 		HttpClient httpClient = new DefaultHttpClient();
+		
 		HttpGet httpGet = new HttpGet(movies.getResourceUrl() + id);
 
 		HttpResponse response = null;

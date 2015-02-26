@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import ca.ualberta.ssrg.androidelasticsearch.R;
@@ -76,10 +77,12 @@ public class MainActivity extends Activity {
 		super.onResume();
 		
 		
-
+        //app should start with all movies listed
 		// Refresh the list when visible
 		// TODO: Search all
-		
+		movies.clear();
+		Thread thread = new SearchThread("");
+		thread.start();
 	}
 	
 	/** 
@@ -104,9 +107,12 @@ public class MainActivity extends Activity {
 		movies.clear();
 
 		// TODO: Extract search query from text view
-		
+		EditText tv = (EditText) findViewById(R.id.editText1);
+		String searchText = tv.getText().toString();
 		// TODO: Run the search thread
-		
+		movies.clear();
+		Thread thread = new SearchThread(searchText);
+		thread.start();
 	}
 	
 	/**
@@ -132,6 +138,11 @@ public class MainActivity extends Activity {
 
 	class SearchThread extends Thread {
 		// TODO: Implement search thread
+		private String search;
+		public SearchThread(String s) {
+		search = s;
+		}
+	
 		
 	}
 
